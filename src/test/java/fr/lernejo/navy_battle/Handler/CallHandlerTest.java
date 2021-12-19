@@ -1,13 +1,14 @@
-package fr.lernejo.navy_battle;
+package fr.lernejo.navy_battle.Handler;
 
+import fr.lernejo.navy_battle.Server.Http_Server;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.concurrent.CompletableFuture;
+
 
 class CallHandlerTest {
 
@@ -18,19 +19,14 @@ class CallHandlerTest {
             http_server1.createServer();
             HttpClient client = HttpClient.newHttpClient();
             HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("http://localhost:9876/ping"))
-                .header("Accept", "application/json")
-                .POST(HttpRequest.BodyPublishers.ofString("POST"))
-                .build();
+                .uri(URI.create("http://localhost:9876/ping")).header("Accept", "application/json")
+                .POST(HttpRequest.BodyPublishers.ofString("POST")).build();
             CompletableFuture<HttpResponse<String>> completableFuture = client.sendAsync(request, HttpResponse.BodyHandlers.ofString());
-            completableFuture
-                .thenApplyAsync(HttpResponse::headers);
+            completableFuture.thenApplyAsync(HttpResponse::headers);
             HttpResponse<String> response = completableFuture.join();
             Assertions.assertEquals(response.statusCode(), 200);
             Assertions.assertEquals(response.body(), "OK");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        } catch (Exception e) {e.printStackTrace();}
     }
 
     @Test
@@ -40,18 +36,13 @@ class CallHandlerTest {
             http_server1.createServer();
             HttpClient client = HttpClient.newHttpClient();
             HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("http://localhost:6789/something/false"))
-                .header("Accept", "application/json")
-                .POST(HttpRequest.BodyPublishers.ofString("POST"))
-                .build();
+                .uri(URI.create("http://localhost:6789/something/false")).header("Accept", "application/json")
+                .POST(HttpRequest.BodyPublishers.ofString("POST")).build();
             CompletableFuture<HttpResponse<String>> completableFuture = client.sendAsync(request, HttpResponse.BodyHandlers.ofString());
-            completableFuture
-                .thenApplyAsync(HttpResponse::headers);
+            completableFuture.thenApplyAsync(HttpResponse::headers);
             HttpResponse<String> response = completableFuture.join();
             Assertions.assertEquals(response.statusCode(), 404);
             Assertions.assertEquals(response.body(), "<h1>404 Not Found</h1>No context found for request");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        } catch (Exception e) {e.printStackTrace();}
     }
 }

@@ -1,4 +1,4 @@
-package fr.lernejo.navy_battle;
+package fr.lernejo.navy_battle.Server;
 
 import java.net.URI;
 import java.io.IOException;
@@ -6,7 +6,9 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
+
 public class Client_Server {
+
     private final int port;
 
     public Client_Server(String string) {

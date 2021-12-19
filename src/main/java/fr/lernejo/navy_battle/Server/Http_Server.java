@@ -1,9 +1,13 @@
-package fr.lernejo.navy_battle;
+package fr.lernejo.navy_battle.Server;
 
 import com.sun.net.httpserver.HttpServer;
+import fr.lernejo.navy_battle.Handler.CallHandler;
+import fr.lernejo.navy_battle.Handler.FireHandler;
+import fr.lernejo.navy_battle.Handler.StartHandler;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.util.concurrent.Executors;
+
 
 public class Http_Server  {
 

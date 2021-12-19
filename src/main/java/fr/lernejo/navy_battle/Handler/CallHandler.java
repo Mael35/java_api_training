@@ -1,9 +1,10 @@
-package fr.lernejo.navy_battle;
+package fr.lernejo.navy_battle.Handler;
 
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import java.io.IOException;
 import java.io.OutputStream;
+
 
 public class CallHandler implements HttpHandler {
 
