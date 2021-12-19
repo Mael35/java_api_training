@@ -25,6 +25,7 @@ public class Http_Server  {
         server.setExecutor(Executors.newFixedThreadPool(1));
         server.createContext("/ping", new CallHandler());
         server.createContext("/api/game/start", new StartHandler());
+        server.createContext("/api/game/fire", new FireHandler());
         server.start();
     }
 }

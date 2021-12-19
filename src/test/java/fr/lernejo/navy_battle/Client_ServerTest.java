@@ -42,4 +42,16 @@ class Client_ServerTest {
             e.printStackTrace();
         }
     }
+
+    @Test
+    void Fire_Request_true() {
+        try {
+            Http_Server http_server = new Http_Server("5060");
+            http_server.createServer();
+            Client_Server client_server = new Client_Server("5070");
+            org.assertj.core.api.Assertions.assertThatNoException().isThrownBy(() -> client_server.Fire_Request("http://localhost:5060", "J10"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

@@ -22,6 +22,7 @@ public class Launcher {
             else{
                 Client_Server client_server = new Client_Server(args[0]);
                 client_server.Send_Request(args[1]);
+                client_server.Fire_Request(args[1],"B2");
             }
         }
 

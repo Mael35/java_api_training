@@ -26,4 +26,14 @@ public class Client_Server {
         System.out.println(response.statusCode());
         System.out.println(response.body());
     }
+
+    public void Fire_Request(String adversaryURL, String cell) throws IOException, InterruptedException {
+        HttpClient client_server = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+            .uri(URI.create(adversaryURL + "/api/game/fire?cell=" + cell)).GET().build();
+
+        HttpResponse<String> response = client_server.send(request, HttpResponse.BodyHandlers.ofString());
+        System.out.println(response.statusCode());
+        System.out.println(response.body());
+    }
 }
